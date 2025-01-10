@@ -9,6 +9,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node build/index.js",
+    "ci": "npm run build && npm run start",
     "dev": "ts-node -r tsconfig-paths/register src/index.ts"
   },
   "dependencies": {

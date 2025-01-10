@@ -60,23 +60,23 @@ export async function createHook(answers: CliAnswers): Promise<void> {
     // Generate the TypeScript file
     await createFile(
       path.join(typeScriptPath, answers.typescript_file_name),
-      template.typeScriptTemplate()
+      template.typeScriptTemplate(),
     );
 
     // Generate the service file
     await createFile(
       path.join(servicePath, answers.service_file_name),
-      template.serviceTemplate()
+      template.serviceTemplate(),
     );
 
     // Generate the hook file
     await createFile(
       path.join(hookPath, answers.hook_name),
-      template.hookTemplate()
+      template.hookTemplate(),
     );
 
-    Logger.success("All files created successfully!");
+    Logger.success("🎉 All files created successfully!");
   } catch (error) {
-    Logger.error(`Error in createHook function: ${error}`);
+    Logger.error(`❌ Error in createHook function: ${error}`);
   }
 }

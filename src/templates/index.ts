@@ -2,7 +2,7 @@ import { CliAnswers, HookType, RequestMethods } from "@/types";
 import { capitalize } from "@/utils/capitalize.util";
 import { getTsFileTemplate } from "./typescript.template";
 import { getServiceTemplate } from "./service.template";
-import { getHookType } from "@/utils/getHookType";
+import { getHookType } from "@/utils/get-hook-type";
 import { getHookTemplate } from "./hook.template";
 
 export class Template {
@@ -35,7 +35,7 @@ export class Template {
     return getServiceTemplate(
       this.answers,
       this.responseTypeName,
-      this.serviceConstName
+      this.serviceConstName,
     );
   }
 

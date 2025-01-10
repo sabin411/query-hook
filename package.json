@@ -1,5 +1,5 @@
 {
-  "name": "node-ts-v2",
+  "name": "api-query-hook-cli",
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "ci": "npm run build && npm run start",
     "dev": "ts-node -r tsconfig-paths/register src/index.ts",
     "prepublishOnly": "npm run ci",
-    "local-release": "changeset version && changeset publish"
+    "local-release": "changeset version && changeset publish --access=public"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.11",

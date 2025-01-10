@@ -6,9 +6,12 @@
   "engines": {
     "node": ">= 16.14"
   },
+  "_moduleAliases": {
+    "@": "build"
+  },
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "ts-node -r tsconfig-paths/register build/index.js",
     "ci": "npm run build && npm run start",
     "dev": "ts-node -r tsconfig-paths/register src/index.ts"
   },
@@ -17,6 +20,7 @@
     "chalk": "4.1.2",
     "cli-table3": "^0.6.5",
     "inquirer": "^12.3.0",
+    "module-alias": "^2.2.3",
     "path": "^0.12.7",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",

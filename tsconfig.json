@@ -10,6 +10,7 @@
     "useUnknownInCatchVariables": false,
     "types": ["node"],
     "outDir": "./build",
+    "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

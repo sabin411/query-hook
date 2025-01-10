@@ -11,7 +11,7 @@ const run = async () => {
   try {
     if (extractArg(CLIArg.VERSION)) {
       const packageJson = await require("../package.json");
-      Logger.log(packageJson.default);
+      Logger.log(packageJson.version);
 
       return;
     }

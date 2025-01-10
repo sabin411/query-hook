@@ -1,3 +1,4 @@
+import { inquiryStaticText } from "@/constants";
 import inquirer from "inquirer";
 
 export const inquireAnswer = async () => {
@@ -5,7 +6,7 @@ export const inquireAnswer = async () => {
     {
       type: "input",
       name: "hook_name",
-      message: "Enter the name of api hook file:",
+      message: inquiryStaticText["hook_name_msg"],
       default: "useGetUser.tsx",
       required: true,
       validate: (value) => {
@@ -14,14 +15,14 @@ export const inquireAnswer = async () => {
           return true;
         }
 
-        return "Hook name should start with 'use' and should have '.tsx' extension";
+        return inquiryStaticText["hook_name_validation_msg"];
       },
     },
 
     {
       type: "input",
       name: "service_file_name",
-      message: "Enter the service name:",
+      message: inquiryStaticText["service_file_name_msg"],
       default: "user.service.ts",
       required: true,
       validate: (value) => {
@@ -30,14 +31,14 @@ export const inquireAnswer = async () => {
           return true;
         }
 
-        return "Service file should be a typescript file hence should have .ts extension";
+        return inquiryStaticText["service_file_name_validation_msg"];
       },
     },
 
     {
       type: "input",
       name: "typescript_file_name",
-      message: "Enter the typescript file name for better typecast:",
+      message: inquiryStaticText["typescript_file_name_msg"],
       default: "user.type.ts",
       required: true,
       validate: (value) => {
@@ -46,15 +47,14 @@ export const inquireAnswer = async () => {
           return true;
         }
 
-        return "Typescript file should be a typescript file hence should have .ts extension";
+        return inquiryStaticText["typescript_file_name_validation_msg"];
       },
     },
 
     {
       type: "input",
       name: "protoType_file_name",
-      message:
-        "Please enter the proto-type file name from where you want to import response type:",
+      message: inquiryStaticText["protoType_file_name_msg"],
       default: "user",
       required: true,
     },
@@ -62,8 +62,7 @@ export const inquireAnswer = async () => {
     {
       type: "input",
       name: "response_type_name",
-      message:
-        "Please enter the response type you want to import from proto-type file (you selected above):",
+      message: inquiryStaticText["response_type_name_msg"],
       default: "SendInviteToUserResponse",
       required: true,
     },
@@ -71,14 +70,14 @@ export const inquireAnswer = async () => {
     {
       type: "input",
       name: "service_url",
-      message: "Enter the url for the service:",
+      message: inquiryStaticText["service_url_msg"],
       default: "/users/email",
     },
 
     {
       type: "list",
       name: "service_method",
-      message: "Enter the method for the service:",
+      message: inquiryStaticText["service_method_msg"],
       default: "get",
       choices: ["get", "post", "put", "delete"],
     },

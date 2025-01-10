@@ -1,4 +1,4 @@
-import { CLIArg } from "./constants";
+import { CLIArg, initialLog } from "./constants";
 import { createHook } from "./executables/create-hook.executable";
 import { inquireAnswer } from "./utils";
 import { extractArg } from "./utils/args.util";
@@ -22,7 +22,7 @@ const run = async () => {
     }
 
     if (extractArg(CLIArg.CREATE_HOOK)) {
-      Logger.warning("Let's configure some options for your new hook 🧑🏽‍💻");
+      Logger.warning(initialLog);
       const answers = await inquireAnswer();
 
       createHook(answers);

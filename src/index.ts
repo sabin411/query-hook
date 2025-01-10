@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { CLIArg, initialLog } from "./constants";
 import { createHook } from "./executables/create-hook.executable";
 import { inquireAnswer } from "./utils";

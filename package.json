@@ -1,0 +1,24 @@
+{
+  "name": "node-ts-v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 16.14"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts"
+  },
+  "dependencies": {
+    "@types/node": "^22.10.5",
+    "chalk": "4.1.2",
+    "cli-table3": "^0.6.5",
+    "inquirer": "^12.3.0",
+    "path": "^0.12.7",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.2"
+  }
+}

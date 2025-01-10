@@ -1,0 +1,12 @@
+{
+  "importPath": {
+    "typeScript": "@/types",
+    "service": "@/services",
+    "hook": "@/hooks"
+  },
+  "exportPath": {
+    "typeScript": "/types",
+    "service": "/services",
+    "hook": "/hooks/apiHooks"
+  }
+}

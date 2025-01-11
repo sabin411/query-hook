@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 2.1.2
+
+### Patch Changes
+
+- 987b408: add repository information to package.json
+
 ## 2.1.1
 
 ### Patch Changes

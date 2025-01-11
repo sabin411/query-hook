@@ -13,9 +13,11 @@ const path = require("path");
 async function ensureDirectory(dirPath: string): Promise<void> {
   try {
     await mkdir(dirPath, { recursive: true });
-    Logger.success(`Directory ensured: ${dirPath}`);
+    Logger.info(`Directory ensured: ${dirPath}`);
   } catch (error) {
-    Logger.error(`Error ensuring directory ${dirPath}: ${error}`);
+    const errorMsg = `Error ensuring directory ${dirPath}: ${error}`;
+    Logger.error(errorMsg);
+    throw new Error(errorMsg);
   }
 }
 
@@ -23,14 +25,31 @@ async function ensureDirectory(dirPath: string): Promise<void> {
  * Creates a file with the specified content.
  * @param {string} filePath - The path where the file will be created.
  * @param {string} content - The content to write into the file.
+ * @param {string} fileName - The name of the file that will be created and to be exported from the index.ts file.
  * @returns {Promise<void>}
  */
-async function createFile(filePath: string, content: string): Promise<void> {
+async function createFile(
+  filePath: string,
+  content: string,
+  fileName: string,
+): Promise<void> {
   try {
     await writeFile(filePath, content, { encoding: "utf8" });
+
+    // Export the file from the index.ts file if index.ts doesn't exist then create one and export the file.
+    // else just append the export statement to the index.ts file.
+    const indexFilePath = path.join(filePath, "..", "index.ts");
+    const exportStatement = `export * from "./${fileName}";\n`;
+
+    await writeFile(indexFilePath, exportStatement, {
+      encoding: "utf8",
+      flag: "a",
+    });
     Logger.success(`✅ File created successfully at ${filePath}`);
   } catch (error) {
-    Logger.error(`🐛 Error creating file at ${filePath}: ${error}`);
+    const errorMsg = `🐛 Error creating file at ${filePath}: ${error}`;
+    Logger.error(errorMsg);
+    throw new Error(errorMsg);
   }
 }
 
@@ -67,27 +86,35 @@ export async function createHook(answers: CliAnswers): Promise<void> {
         path: typeScriptPath,
         name: answers.typescript_file_name,
         template: () => template.typeScriptTemplate(),
+        fileName: answers.typescript_file_name.replace(".ts", ""),
       },
       {
         path: servicePath,
         name: answers.service_file_name,
         template: () => template.serviceTemplate(),
+        fileName: answers.service_file_name.replace(".ts", ""),
       },
       {
         path: hookPath,
         name: answers.hook_file_name,
         template: () => template.hookTemplate(),
+        fileName: answers.hook_file_name.replace(".tsx", ""),
       },
     ];
 
     // Generate all files
     // * Same reason as above 👆🏻
     for (const file of toBeCreatedFiles) {
-      await createFile(path.join(file.path, file.name), file.template());
+      await createFile(
+        path.join(file.path, file.name),
+        file.template(),
+        file.fileName,
+      );
     }
 
     Logger.success("🎉 All files created successfully!");
   } catch (error) {
     Logger.error(`❌ Error in createHook function: ${error}`);
+    throw error;
   }
 }

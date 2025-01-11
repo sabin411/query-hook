@@ -48,12 +48,16 @@ export async function createHook(answers: CliAnswers): Promise<void> {
     const { typeScript, service, hook } = configs.exportPath;
     const typeScriptPath = path.join(currentDir, typeScript);
     const servicePath = path.join(currentDir, service);
-    const hookPath = path.join(currentDir, hook, "api_hooks");
+    const hookPath = path.join(currentDir, hook);
 
     const pathList = [typeScriptPath, servicePath, hookPath];
 
     // Ensure required directories exist
-    pathList.forEach(async (dir) => await ensureDirectory(dir));
+    // * pathList.forEach(async (dir) => await ensureDirectory(dir)); // Wondering why not just use forEach?
+    // * Thats because, forEach does not work as expected with asynchronous operations. This happens because forEach does not await the promises within its callback, which might cause some directories or files to be processed before they are properly created. This was a news for me too.
+    for (const dir of pathList) {
+      await ensureDirectory(dir);
+    }
 
     // Create templates using the provided answers
     const template = new Template(answers);
@@ -77,9 +81,10 @@ export async function createHook(answers: CliAnswers): Promise<void> {
     ];
 
     // Generate all files
-    toBeCreatedFiles.forEach(async (file) => {
+    // * Same reason as above 👆🏻
+    for (const file of toBeCreatedFiles) {
       await createFile(path.join(file.path, file.name), file.template());
-    });
+    }
 
     Logger.success("🎉 All files created successfully!");
   } catch (error) {

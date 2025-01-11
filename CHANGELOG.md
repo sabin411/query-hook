@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 2.0.0
+
+### Major Changes
+
+- 78d10b6: update import paths to use relative paths and adjust start script in package.json
+
 ## 1.1.0
 
 ### Minor Changes

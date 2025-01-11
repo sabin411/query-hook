@@ -1,4 +1,4 @@
-import { type CLIArg as CLIArgType } from "@/types/options.type";
+import { type CLIArg as CLIArgType } from "../types";
 
 export const CLIArg = {
   FILE_NAME: "fileName",

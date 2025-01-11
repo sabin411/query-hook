@@ -1,7 +1,8 @@
 import { writeFile, access, mkdir } from "fs/promises";
-import { Logger } from "@/utils/logger.util";
-import { CliAnswers } from "@/types";
-import { Template } from "@/templates";
+import { Logger } from "../utils";
+import { CliAnswers } from "../types";
+import { Template } from "../templates";
+
 const path = require("path");
 
 /**

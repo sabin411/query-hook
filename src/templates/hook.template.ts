@@ -1,6 +1,5 @@
-import { HookType } from "@/types";
-import { capitalize } from "@/utils/capitalize.util";
-import { kebabCase } from "@/utils/kebab-case";
+import { HookType } from "../types";
+import { capitalize, kebabCase } from "../utils";
 
 type GetHookTemplateArg = {
   hookConstName: string;

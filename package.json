@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "tsc && cp package.json build/",
-    "start": "ts-node -r tsconfig-paths/register build/index.js",
+    "start": "node build/index.js",
     "ci": "npm run build && npm run start",
     "dev": "ts-node -r tsconfig-paths/register src/index.ts",
     "prepublishOnly": "npm run ci",

@@ -1,5 +1,5 @@
-import { inquiryStaticText } from "@/constants";
 import inquirer from "inquirer";
+import { inquiryStaticText } from "../constants";
 
 export const inquireAnswer = async () => {
   return await inquirer.prompt([

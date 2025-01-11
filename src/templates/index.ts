@@ -1,9 +1,8 @@
-import { CliAnswers, HookType, RequestMethods } from "@/types";
-import { capitalize } from "@/utils/capitalize.util";
 import { getTsFileTemplate } from "./typescript.template";
 import { getServiceTemplate } from "./service.template";
-import { getHookType } from "@/utils/get-hook-type";
 import { getHookTemplate } from "./hook.template";
+import { CliAnswers, HookType } from "../types";
+import { capitalize, getHookType } from "../utils";
 
 export class Template {
   answers: CliAnswers;

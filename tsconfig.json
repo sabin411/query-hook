@@ -10,11 +10,7 @@
     "useUnknownInCatchVariables": false,
     "types": ["node"],
     "outDir": "./build",
-    "rootDir": "./src",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "rootDir": "./src"
   },
   "include": ["src", "package.json"],
   "exclude": ["node_modules"]

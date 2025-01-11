@@ -1,9 +1,9 @@
-import { CliAnswers } from "@/types";
+import { CliAnswers } from "../types";
 
 export const getServiceTemplate = (
   answer: CliAnswers,
   responseTypeName: string,
-  serviceConstName: string
+  serviceConstName: string,
 ) => {
   const { service_url, service_method } = answer;
 

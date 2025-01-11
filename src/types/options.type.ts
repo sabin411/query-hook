@@ -1,4 +1,4 @@
-import { CLIArg } from "@/constants/options.constant";
+import { CLIArg } from "../constants";
 
 export type CLIArg = (typeof CLIArg)[keyof typeof CLIArg];
 export type RequestMethods = "get" | "post" | "put" | "delete";

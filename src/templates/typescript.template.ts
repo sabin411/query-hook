@@ -1,8 +1,8 @@
-import { CliAnswers } from "@/types";
+import { CliAnswers } from "../types";
 
 export const getTsFileTemplate = (
   answer: CliAnswers,
-  responseTypeName: string
+  responseTypeName: string,
 ) => {
   const { response_type_name, protoType_file_name } = answer;
 

@@ -2,7 +2,7 @@
 import * as Table from "cli-table3";
 
 import { Logger } from "./logger.util";
-import { CLIArg, CLIArgAlias } from "@/constants";
+import { CLIArg, CLIArgAlias } from "../constants";
 
 export const writeHelpTable = () => {
   const table = new Table({

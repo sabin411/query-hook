@@ -5,7 +5,7 @@ export const inquireAnswer = async () => {
   return await inquirer.prompt([
     {
       type: "input",
-      name: "hook_name",
+      name: "hook_file_name",
       message: inquiryStaticText["hook_name_msg"],
       default: "useGetUser.tsx",
       required: true,

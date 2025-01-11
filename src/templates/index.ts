@@ -1,8 +1,8 @@
-import { getTsFileTemplate } from "./typescript.template";
-import { getServiceTemplate } from "./service.template";
-import { getHookTemplate } from "./hook.template";
 import { CliAnswers, HookType } from "../types";
+import { getHookTemplate } from "./hook.template";
 import { capitalize, getHookType } from "../utils";
+import { getServiceTemplate } from "./service.template";
+import { getTsFileTemplate } from "./typescript.template";
 
 export class Template {
   answers: CliAnswers;
@@ -14,16 +14,16 @@ export class Template {
 
   constructor(answers: CliAnswers) {
     this.answers = answers;
-    const { hook_name, service_method } = answers;
+    const { hook_file_name, service_method } = answers;
 
     const capitalizedHookType = capitalize(getHookType(service_method));
 
+    this.serviceConstName = hook_file_name
+      .replace("use", "")
+      .replace(".tsx", "");
     this.hookType = getHookType(service_method);
-
-    this.serviceConstName = hook_name.replace("use", "").replace(".tsx", "");
-
+    this.hookConstName = hook_file_name.replace(".tsx", "");
     this.responseTypeName = `${this.serviceConstName}${capitalizedHookType}Response`;
-    this.hookConstName = hook_name.replace(".tsx", "");
   }
 
   public typeScriptTemplate() {

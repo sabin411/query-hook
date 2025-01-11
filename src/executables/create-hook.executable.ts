@@ -28,9 +28,9 @@ async function ensureDirectory(dirPath: string): Promise<void> {
 async function createFile(filePath: string, content: string): Promise<void> {
   try {
     await writeFile(filePath, content, { encoding: "utf8" });
-    Logger.success(`File created successfully at ${filePath}`);
+    Logger.success(`✅ File created successfully at ${filePath}`);
   } catch (error) {
-    Logger.error(`Error creating file at ${filePath}: ${error}`);
+    Logger.error(`🐛 Error creating file at ${filePath}: ${error}`);
   }
 }
 
@@ -50,31 +50,36 @@ export async function createHook(answers: CliAnswers): Promise<void> {
     const servicePath = path.join(currentDir, service);
     const hookPath = path.join(currentDir, hook, "api_hooks");
 
+    const pathList = [typeScriptPath, servicePath, hookPath];
+
     // Ensure required directories exist
-    await ensureDirectory(typeScriptPath);
-    await ensureDirectory(servicePath);
-    await ensureDirectory(hookPath);
+    pathList.forEach(async (dir) => await ensureDirectory(dir));
 
     // Create templates using the provided answers
     const template = new Template(answers);
 
-    // Generate the TypeScript file
-    await createFile(
-      path.join(typeScriptPath, answers.typescript_file_name),
-      template.typeScriptTemplate(),
-    );
+    const toBeCreatedFiles = [
+      {
+        path: typeScriptPath,
+        name: answers.typescript_file_name,
+        template: () => template.typeScriptTemplate(),
+      },
+      {
+        path: servicePath,
+        name: answers.service_file_name,
+        template: () => template.serviceTemplate(),
+      },
+      {
+        path: hookPath,
+        name: answers.hook_file_name,
+        template: () => template.hookTemplate(),
+      },
+    ];
 
-    // Generate the service file
-    await createFile(
-      path.join(servicePath, answers.service_file_name),
-      template.serviceTemplate(),
-    );
-
-    // Generate the hook file
-    await createFile(
-      path.join(hookPath, answers.hook_name),
-      template.hookTemplate(),
-    );
+    // Generate all files
+    toBeCreatedFiles.forEach(async (file) => {
+      await createFile(path.join(file.path, file.name), file.template());
+    });
 
     Logger.success("🎉 All files created successfully!");
   } catch (error) {

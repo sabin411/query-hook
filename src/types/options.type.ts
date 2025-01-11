@@ -5,7 +5,7 @@ export type RequestMethods = "get" | "post" | "put" | "delete";
 export type HookType = "query" | "mutation";
 
 export type CliAnswers = {
-  hook_name: string;
+  hook_file_name: string;
   service_url: string;
   service_method: RequestMethods;
   service_file_name: string;

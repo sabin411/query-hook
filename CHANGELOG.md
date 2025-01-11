@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 2.1.1
+
+### Patch Changes
+
+- e5eabb6: simplify CLI argument constants and improve help messages
+
 ## 2.1.0
 
 ### Minor Changes

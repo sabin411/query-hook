@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 2.1.4
+
+### Patch Changes
+
+- a0c3e7f: feat: refactor hook and service templates to remove serviceFileName and improve type definitions for params and payload
+
 ## 2.1.3
 
 ### Patch Changes

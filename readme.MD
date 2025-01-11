@@ -42,7 +42,6 @@ npm install -g api-query-hook-cli
 }
 ```
 
-- **`importPath`**: Specifies the paths to import dependencies like types, services, and hooks.
 - **`exportPath`**: Specifies the paths where generated files will be placed.
 
 ---

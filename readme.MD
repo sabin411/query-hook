@@ -30,13 +30,10 @@ npm install -g api-query-hook-cli
 1. Create a JSON file named `hookApi.json` in your project root directory.
 2. Configure the JSON file as follows:
 
+**`[Note]`**: Change the exportPaths as per you requirements.
+
 ```json
 {
-  "importPath": {
-    "typeScript": "@/types",
-    "service": "@/services",
-    "hook": "@/hooks"
-  },
   "exportPath": {
     "typeScript": "/types",
     "service": "/services",

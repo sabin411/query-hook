@@ -8,6 +8,7 @@ export class Template {
   answers: CliAnswers;
   /** Type name of response data  */
   responseTypeName: string;
+  /** Name of the service constant */
   serviceConstName: string;
   hookType: HookType;
   hookConstName: string;
@@ -39,12 +40,13 @@ export class Template {
   }
 
   public hookTemplate() {
-    return getHookTemplate({
+    const templateArgObj = {
       hookConstName: this.hookConstName,
       responseTypeName: this.responseTypeName,
       serviceConstName: this.serviceConstName,
-      serviceFileName: this.answers.service_file_name,
       hookType: this.hookType,
-    });
+    };
+
+    return getHookTemplate(templateArgObj);
   }
 }

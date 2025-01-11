@@ -5,7 +5,6 @@ type GetHookTemplateArg = {
   hookConstName: string;
   responseTypeName: string;
   serviceConstName: string;
-  serviceFileName: string;
   hookType: HookType;
 };
 
@@ -13,7 +12,6 @@ export const getHookTemplate = ({
   hookConstName,
   responseTypeName,
   serviceConstName,
-  serviceFileName,
   hookType,
 }: GetHookTemplateArg) => {
   const capitalizedHookConstName = capitalize(hookConstName);
@@ -23,8 +21,8 @@ export const getHookTemplate = ({
     return `
 import { QueryKey, useQuery, UseQueryOptions } from "@tanstack/react-query";
 
-import { ${serviceConstName} } from "@/services/${serviceFileName}";
-import { ${responseTypeName} } from "@/types";
+import { ${serviceConstName} } from "@/services";
+import { ${responseTypeName}, QueryParams } from "@/types";
 
 type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> = Omit<
   UseQueryOptions<${responseTypeName}, Error, TData>,
@@ -32,7 +30,8 @@ type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> = Omit<
 >;
 
 type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-  params: Record<string, any>;
+// ! NOTE: please do not forget to update params type to the actual type 
+  params: QueryParams;
   queryKey?: QueryKey;
 } & ${capitalizedHookConstName}Options<TData>;
 
@@ -60,8 +59,8 @@ export function ${hookConstName}<TData = ${responseTypeName}>({
   return `
 import { QueryKey, useQuery, UseQueryOptions } from "@tanstack/react-query";
 
-import { ${serviceConstName} } from "@/services/${serviceFileName}";
-import { ${responseTypeName} } from "@/types";
+import { ${serviceConstName} } from "@/services";
+import { ${responseTypeName}, Payload } from "@/types";
 
 type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> =
   Omit<
@@ -70,7 +69,7 @@ type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> =
   >;
 
 type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-  payload: Record<string, any>;
+  payload: Payload;
   queryKey?: QueryKey;
 } & ${capitalizedHookConstName}Options<TData>;
 

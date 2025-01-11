@@ -20,7 +20,7 @@ This CLI tool allows developers to easily create query or mutation hooks that in
 Install the CLI globally on your device:
 
 ```bash
-npm install -g query-hook-cli
+npm install -g api-query-hook-cli
 ```
 
 ---

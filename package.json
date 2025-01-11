@@ -3,6 +3,17 @@
   "version": "2.0.0",
   "main": "index.js",
   "license": "MIT",
+  "description": "This CLI tool allows developers to easily create query or mutation hooks that integrate React Query and Axios, while ensuring proper type safety. ",
+  "keywords": [
+    "react-query",
+    "cli",
+    "axios",
+    "hooks",
+    "grepsr"
+  ],
+  "files": [
+    "build"
+  ],
   "engines": {
     "node": ">= 16.14"
   },

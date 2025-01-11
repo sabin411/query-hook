@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 2.1.0
+
+### Minor Changes
+
+- d6dc0d3: update readme file.
+
 ## 2.0.0
 
 ### Major Changes

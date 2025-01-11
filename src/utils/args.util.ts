@@ -1,8 +1,7 @@
 import { type Answers } from "inquirer";
 import type { CLIArg } from "../types/options.type";
 import arg = require("arg");
-import { isBoolean } from "./validation.util";
-import { BOOLEAN_CLI_ARGS, CLI_ARGS_TYPE } from "../constants";
+import { CLI_ARGS_TYPE } from "../constants";
 
 /**
  * Extracts an argument
@@ -19,15 +18,15 @@ const getArgs = (): Answers => {
     ]),
   );
 
-  BOOLEAN_CLI_ARGS.forEach((booleanArg) => {
-    const argumentInBoolean = `--${booleanArg}`;
+  // BOOLEAN_CLI_ARGS.forEach((booleanArg) => {
+  //   const argumentInBoolean = `--${booleanArg}`;
 
-    if (args[argumentInBoolean] && !isBoolean(args[argumentInBoolean])) {
-      throw new Error(
-        `The expected value type for the '${arg}' is Boolean (true/false), but the provided value was ${args[argumentInBoolean]}`,
-      );
-    }
-  });
+  //   if (args[argumentInBoolean] && !isBoolean(args[argumentInBoolean])) {
+  //     throw new Error(
+  //       `The expected value type for the '${arg}' is Boolean (true/false), but the provided value was ${args[argumentInBoolean]}`,
+  //     );
+  //   }
+  // });
 
   return args;
 };

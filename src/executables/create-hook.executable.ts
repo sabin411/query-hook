@@ -1,4 +1,4 @@
-import { writeFile, access, mkdir } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import { Logger } from "../utils";
 import { CliAnswers } from "../types";
 import { Template } from "../templates";

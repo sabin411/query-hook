@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 2.1.3
+
+### Patch Changes
+
+- 0448ecc: update code such that when file is created index.ts file is also added that exports all file
+
 ## 2.1.2
 
 ### Patch Changes

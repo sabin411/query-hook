@@ -1,5 +1,15 @@
 # node-ts-v2
 
+## 3.0.0
+
+### Major Changes
+
+- 83e26c7: ✨ feat: add support for creating hooks only and refactor file creation logic
+
+### Patch Changes
+
+- 6952a94: fix: update CLI argument alias for hook for option
+
 ## 2.2.0
 
 ### Minor Changes

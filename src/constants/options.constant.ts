@@ -8,8 +8,7 @@ export const CLIArg = {
 export const CLIArgAlias = {
   VERSION: "v",
   CREATE: "c",
-  HELP: "h",
-  HOOK_ONLY: "ho",
+  HOOK_ONLY: "h",
 };
 
 export const CLI_ARGS_TYPE = {
@@ -21,5 +20,5 @@ export const CLI_ARGS_TYPE = {
   // Aliases
   "-v": "--version",
   "-c": "--createHook",
-  "-ho": "--hookOnly",
+  "-h": "--hookOnly",
 };

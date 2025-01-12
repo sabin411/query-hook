@@ -9,12 +9,8 @@ export const inquiryStaticText = {
     "🍄 Enter the typescript file name for better typecast:",
   typescript_file_name_validation_msg:
     "🤷🏻‍♂️ Typescript file should be a typescript file hence should have .ts extension",
-  protoType_file_name_msg:
-    "🍄 Please enter the proto-type file name from where you want to import response type:",
-  response_type_name_msg:
-    "🍄 Please enter the response type you want to import from proto-type file (you selected above):",
-  service_url_msg: "🍄 Enter the service url:",
   service_method_msg: "🍄 Select network request method:",
 };
 export const initialLog =
   "Let's configure some required options for your new hook 🧑🏽‍💻";
+export const replaceApi = "// 👈 replace with your api endpoint.";

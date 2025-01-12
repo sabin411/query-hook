@@ -52,29 +52,6 @@ export const inquireAnswer = async () => {
     },
 
     {
-      type: "input",
-      name: "protoType_file_name",
-      message: inquiryStaticText["protoType_file_name_msg"],
-      default: "user",
-      required: true,
-    },
-
-    {
-      type: "input",
-      name: "response_type_name",
-      message: inquiryStaticText["response_type_name_msg"],
-      default: "SendInviteToUserResponse",
-      required: true,
-    },
-
-    {
-      type: "input",
-      name: "service_url",
-      message: inquiryStaticText["service_url_msg"],
-      default: "/users/email",
-    },
-
-    {
       type: "list",
       name: "service_method",
       message: inquiryStaticText["service_method_msg"],

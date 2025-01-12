@@ -1,17 +1,14 @@
 import { CliAnswers } from "../types";
 
-export const getTsFileTemplate = (
-  answer: CliAnswers,
-  responseTypeName: string,
-) => {
-  const { response_type_name, protoType_file_name } = answer;
-
+export const getTsFileTemplate = (responseTypeName: string) => {
   return `
 /* global API */
-import { ${response_type_name} } from "@/proto-types/${protoType_file_name}";
+
+// TODO: Remove this type and use the actual type from the proto file you are working with.
+type ProtoApiResponse = {}
 
 export type ${responseTypeName} =
-API.Response<${response_type_name}>;
+API.Response<ProtoApiResponse>; // * IMPORTANT: Please import and use type from the proto file you are working with.
 
 // * Please don't forget to update this type name and actual type as per your requirement
 export type QueryParams = {

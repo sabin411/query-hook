@@ -28,7 +28,7 @@ export class Template {
   }
 
   public typeScriptTemplate() {
-    return getTsFileTemplate(this.answers, this.responseTypeName);
+    return getTsFileTemplate(this.responseTypeName);
   }
 
   public serviceTemplate() {

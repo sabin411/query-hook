@@ -30,7 +30,6 @@ type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> = Omit<
 >;
 
 type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-// ! NOTE: please do not forget to update params type to the actual type 
   params: QueryParams;
   queryKey?: QueryKey;
 } & ${capitalizedHookConstName}Options<TData>;

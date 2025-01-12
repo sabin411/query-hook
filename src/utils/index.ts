@@ -6,4 +6,4 @@ export * from "./kebab-case";
 export * from "./logger.util";
 export * from "./validation.util";
 export * from "./inquire-answer.util";
-export * from "./innerTemplate";
+export * from "./innerTemplate.util";

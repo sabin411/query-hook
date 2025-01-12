@@ -10,3 +10,10 @@ export type CliAnswers = {
   service_file_name: string;
   typescript_file_name: string;
 };
+
+export type HookOnlyPromptAnswers = {
+  hook_file_name: string;
+  hook_type: HookType;
+  service: string;
+  response_type: string;
+};

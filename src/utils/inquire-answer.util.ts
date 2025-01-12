@@ -60,3 +60,45 @@ export const inquireAnswer = async () => {
     },
   ]);
 };
+
+export const inquireAnswerForHookOnlyPrompt = async () => {
+  return await inquirer.prompt([
+    {
+      type: "input",
+      name: "hook_file_name",
+      message: inquiryStaticText["hook_name_msg"],
+      default: "useGetUser.tsx",
+      required: true,
+      validate: (value) => {
+        // hook_name should start with use and end with .tsx
+        if (value.startsWith("use") && value.endsWith(".tsx")) {
+          return true;
+        }
+
+        return inquiryStaticText["hook_name_validation_msg"];
+      },
+    },
+
+    {
+      type: "list",
+      name: "hook_type",
+      message: "🍄 Enter the type of hook:",
+      default: "query",
+      choices: ["query", "mutation"],
+    },
+
+    {
+      type: "input",
+      name: "service",
+      message:
+        "🍄 Enter the service name you wanna use (eg: getOneOrganization):",
+    },
+
+    {
+      type: "input",
+      name: "response_type",
+      message:
+        "🍄 Enter the response type name (eg: GetOneOrganizationQueryResponse):",
+    },
+  ]);
+};

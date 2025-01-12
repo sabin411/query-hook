@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 2.2.0
+
+### Minor Changes
+
+- 1ac35e1: ✨ feat: remove unused variables and improve template structure
+
 ## 2.1.4
 
 ### Patch Changes

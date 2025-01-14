@@ -122,8 +122,8 @@ type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> = Omit<
 >;
 
 type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-  // * Add your query params type here
-  params: unknown;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params: any; // * Add your query params type here
   queryKey?: QueryKey;
 } & ${capitalizedHookConstName}Options<TData>;
 
@@ -161,8 +161,8 @@ type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> =
   >;
 
 type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-  // * Add your payload type here
-  payload: unknown;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  payload: any; // * Add your payload type here
   queryKey?: QueryKey;
 } & ${capitalizedHookConstName}Options<TData>;
 

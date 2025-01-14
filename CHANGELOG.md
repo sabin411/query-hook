@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 3.1.1
+
+### Patch Changes
+
+- 3d4d70b: 🐛 fix: update types in hook template to use 'any' for params and payload
+
 ## 3.1.0
 
 ### Minor Changes

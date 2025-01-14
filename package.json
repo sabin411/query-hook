@@ -1,6 +1,6 @@
 {
   "name": "api-query-hook-cli",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "main": "index.js",
   "license": "MIT",
   "description": "This CLI tool allows developers to easily create query or mutation hooks that integrate React Query and Axios, while ensuring proper type safety. ",

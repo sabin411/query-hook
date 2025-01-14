@@ -10,6 +10,11 @@ export const inquiryStaticText = {
   typescript_file_name_validation_msg:
     "🤷🏻‍♂️ Typescript file should be a typescript file hence should have .ts extension",
   service_method_msg: "🍄 Select network request method:",
+  hook_type_msg: "🍄 Enter the type of hook:",
+  service_msg:
+    "🍄 Enter the service name you wanna use (eg: getOneOrganization):",
+  response_type_msg:
+    "🍄 Enter the response type name (eg: GetOneOrganizationQueryResponse):",
 };
 export const initialLog =
   "Let's configure some required options for your new hook 🧑🏽‍💻";

@@ -82,7 +82,7 @@ export const inquireAnswerForHookOnlyPrompt = async () => {
     {
       type: "list",
       name: "hook_type",
-      message: "🍄 Enter the type of hook:",
+      message: inquiryStaticText["hook_type_msg"],
       default: "query",
       choices: ["query", "mutation"],
     },
@@ -90,15 +90,13 @@ export const inquireAnswerForHookOnlyPrompt = async () => {
     {
       type: "input",
       name: "service",
-      message:
-        "🍄 Enter the service name you wanna use (eg: getOneOrganization):",
+      message: inquiryStaticText["service_msg"],
     },
 
     {
       type: "input",
       name: "response_type",
-      message:
-        "🍄 Enter the response type name (eg: GetOneOrganizationQueryResponse):",
+      message: inquiryStaticText["response_type_msg"],
     },
   ]);
 };

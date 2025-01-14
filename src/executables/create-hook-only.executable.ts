@@ -26,14 +26,16 @@ export async function createHookOnly(answers: HookOnlyPromptAnswers) {
 
     // Generate hook file
     const hookConstName = answers.hook_file_name.replace(".tsx", "");
+    const templateArgObj = {
+      hookConstName,
+      hookType: answers.hook_type,
+      responseTypeName: answers.response_type,
+      serviceConstName: answers.service,
+    };
+
     await createFile(
       path.join(hookPath, answers.hook_file_name),
-      getHookOnlyTemplate({
-        hookConstName,
-        hookType: answers.hook_type,
-        responseTypeName: answers.response_type,
-        serviceConstName: answers.service,
-      }),
+      getHookOnlyTemplate(templateArgObj),
       hookConstName,
     );
 

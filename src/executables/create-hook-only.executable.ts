@@ -1,6 +1,6 @@
 import { HookOnlyPromptAnswers } from "../types";
 import { createFile } from "./create-file.executable";
-import { getHookTemplate } from "../templates/hook.template";
+import { getHookOnlyTemplate } from "../templates/hook.template";
 import { ensureDirectory } from "./ensure-directory.executable";
 import { Logger } from "../utils";
 
@@ -25,15 +25,16 @@ export async function createHookOnly(answers: HookOnlyPromptAnswers) {
     await ensureDirectory(hookPath);
 
     // Generate hook file
+    const hookConstName = answers.hook_file_name.replace(".tsx", "");
     await createFile(
       path.join(hookPath, answers.hook_file_name),
-      getHookTemplate({
-        hookConstName: answers.hook_file_name.replace(".tsx", ""),
+      getHookOnlyTemplate({
+        hookConstName,
         hookType: answers.hook_type,
         responseTypeName: answers.response_type,
         serviceConstName: answers.service,
       }),
-      answers.hook_file_name,
+      hookConstName,
     );
 
     Logger.success(

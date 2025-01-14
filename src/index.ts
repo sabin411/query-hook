@@ -35,6 +35,7 @@ const run = async () => {
 
     if (extractArg(CLIArg.HOOK_ONLY)) {
       Logger.warning(initialLog);
+
       const answers = await inquireAnswerForHookOnlyPrompt();
       createHookOnly(answers);
 

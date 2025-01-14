@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 3.1.0
+
+### Minor Changes
+
+- 2309c6f: ✨feat: implement hook-only template generation and update related logic
+
 ## 3.0.0
 
 ### Major Changes

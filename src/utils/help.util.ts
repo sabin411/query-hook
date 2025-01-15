@@ -19,6 +19,11 @@ export const writeHelpTable = () => {
       "Show the current version of the package",
     ],
     [CLIArg.CREATE_HOOK, CLIArgAlias.CREATE, "Create a new hook"],
+    [
+      CLIArg.HOOK_ONLY,
+      CLIArgAlias.HOOK_ONLY,
+      "Create a hook without a service and a type file (useful if you have already created them)",
+    ],
   ];
 
   rows = rows.map(([command, alias, ...rest]) => [

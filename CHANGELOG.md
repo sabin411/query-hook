@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 3.1.2
+
+### Patch Changes
+
+- 25161ba: ✨ feat: add new CLI argument for creating a hook without a service and type file
+
 ## 3.1.1
 
 ### Patch Changes

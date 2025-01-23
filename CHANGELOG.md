@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 3.1.3
+
+### Patch Changes
+
+- 0c963ea: 📝 fix: update prompts for service and typescript file names to include examples
+
 ## 3.1.2
 
 ### Patch Changes

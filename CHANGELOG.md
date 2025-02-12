@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 3.1.4
+
+### Patch Changes
+
+- 3919d63: refactor: update hook template to use useMutation and improve naming conventions
+
 ## 3.1.3
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 import { CliAnswers, HookType } from "../types";
 import { getHookTemplate } from "./hook.template";
-import { capitalize, getHookType } from "../utils";
+import { capitalize, getHookType, lowerCase } from "../utils";
 import { getServiceTemplate } from "./service.template";
 import { getTsFileTemplate } from "./typescript.template";
 
@@ -19,12 +19,14 @@ export class Template {
 
     const capitalizedHookType = capitalize(getHookType(service_method));
 
-    this.serviceConstName = hook_file_name
-      .replace("use", "")
-      .replace(".tsx", "");
+    this.serviceConstName = lowerCase(
+      hook_file_name.replace("use", "").replace(".tsx", ""),
+    );
     this.hookType = getHookType(service_method);
     this.hookConstName = hook_file_name.replace(".tsx", "");
-    this.responseTypeName = `${this.serviceConstName}${capitalizedHookType}Response`;
+    this.responseTypeName = `${capitalize(
+      this.serviceConstName,
+    )}${capitalizedHookType}Response`;
   }
 
   public typeScriptTemplate() {

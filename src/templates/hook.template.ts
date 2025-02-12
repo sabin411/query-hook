@@ -56,46 +56,33 @@ export function ${hookConstName}<TData = ${responseTypeName}>({
   }
 
   return `
-import { QueryKey, useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
 import { ${serviceConstName} } from "@/services";
 import { ${responseTypeName}, Payload } from "@/types";
 
-type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> =
-  Omit<
-    UseQueryOptions<${responseTypeName}, Error, TData>,
-    "queryKey"
-  >;
+type ${capitalizedHookConstName}Options = Omit<
+  UseMutationOptions<
+    ${responseTypeName},
+    Error,
+    Payload,
+  >,
+  "mutateFn"
+>;
 
-type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-  payload: Payload;
-  queryKey?: QueryKey;
-} & ${capitalizedHookConstName}Options<TData>;
-
-/**
- * Check if the organization exists in the database
- */
-export function ${hookConstName}<
-  TData = ${responseTypeName},
->({
-  payload,
-  queryKey,
+export function ${hookConstName}({
   ...cb
-}: ${capitalizedHookConstName}Props<TData>) {
-  // You can add or update the query key as needed 
-  const keys: Array<unknown> = ["${kebabCasedServiceConstName}"];
-
-  if (queryKey) {
-    keys.push(...queryKey);
-  }
-
-  return useQuery({
-    queryKey: keys,
-    queryFn: () => ${serviceConstName}(payload),
+}: ${capitalizedHookConstName}Options) {
+  return useMutation<
+    ${responseTypeName},
+    Error,
+    Payload
+  >({
+    mutationFn: (payload: Payload) =>
+      ${serviceConstName}(payload),
     ...cb,
   });
 }
-
   `;
 };
 
@@ -149,43 +136,33 @@ export function ${hookConstName}<TData = ${responseTypeName}>({
   }
 
   return `
-import { QueryKey, useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
 import { ${serviceConstName} } from "@/services";
 import { ${responseTypeName} } from "@/types";
 
-type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> =
-  Omit<
-    UseQueryOptions<${responseTypeName}, Error, TData>,
-    "queryKey"
-  >;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Payload = any; // * Add your payload type here 
 
-type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload: any; // * Add your payload type here
-  queryKey?: QueryKey;
-} & ${capitalizedHookConstName}Options<TData>;
+type ${capitalizedHookConstName}Options = Omit<
+  UseMutationOptions<
+    ${responseTypeName},
+    Error,
+    Payload,
+  >,
+  "mutateFn"
+>;
 
-/**
- * Check if the organization exists in the database
- */
-export function ${hookConstName}<
-  TData = ${responseTypeName},
->({
-  payload,
-  queryKey,
+export function ${hookConstName}({
   ...cb
-}: ${capitalizedHookConstName}Props<TData>) {
-  // You can add or update the query key as needed 
-  const keys: Array<unknown> = ["${kebabCasedServiceConstName}"];
-
-  if (queryKey) {
-    keys.push(...queryKey);
-  }
-
-  return useQuery({
-    queryKey: keys,
-    queryFn: () => ${serviceConstName}(payload),
+}: ${capitalizedHookConstName}Options) {
+  return useMutation<
+    ${responseTypeName},
+    Error,
+    Payload
+  >({
+    mutationFn: (payload: Payload) =>
+      ${serviceConstName}(payload),
     ...cb,
   });
 }

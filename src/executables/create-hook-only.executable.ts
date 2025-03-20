@@ -2,7 +2,7 @@ import { HookOnlyPromptAnswers } from "../types";
 import { createFile } from "./create-file.executable";
 import { getHookOnlyTemplate } from "../templates/hook.template";
 import { ensureDirectory } from "./ensure-directory.executable";
-import { Logger } from "../utils";
+import { capitalize, Logger, lowerCase } from "../utils";
 
 const path = require("path");
 
@@ -26,11 +26,19 @@ export async function createHookOnly(answers: HookOnlyPromptAnswers) {
 
     // Generate hook file
     const hookConstName = answers.hook_file_name.replace(".tsx", "");
+    const serviceConstName = lowerCase(
+      answers.hook_file_name.replace("use", "").replace(".tsx", ""),
+    );
+    const ppName =
+      answers.hook_type === "query"
+        ? `${capitalize(serviceConstName)}QueryParams`
+        : `${capitalize(serviceConstName)}MutationPayload`;
     const templateArgObj = {
       hookConstName,
       hookType: answers.hook_type,
       responseTypeName: answers.response_type,
       serviceConstName: answers.service,
+      ppName,
     };
 
     await createFile(

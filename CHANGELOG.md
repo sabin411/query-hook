@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 3.2.1
+
+### Patch Changes
+
+- f98ce03: fix build error
+
 ## 3.2.0
 
 ### Minor Changes

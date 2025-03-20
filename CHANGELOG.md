@@ -1,5 +1,11 @@
 # node-ts-v2
 
+## 3.2.0
+
+### Minor Changes
+
+- c5f9c7e: better typeName with some minor bug fixes
+
 ## 3.1.4
 
 ### Patch Changes

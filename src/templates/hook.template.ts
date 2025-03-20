@@ -6,6 +6,7 @@ type GetHookTemplateArg = {
   responseTypeName: string;
   serviceConstName: string;
   hookType: HookType;
+  ppName: string;
 };
 
 export const getHookTemplate = ({
@@ -13,6 +14,7 @@ export const getHookTemplate = ({
   responseTypeName,
   serviceConstName,
   hookType,
+  ppName,
 }: GetHookTemplateArg) => {
   const capitalizedHookConstName = capitalize(hookConstName);
   const kebabCasedServiceConstName = kebabCase(serviceConstName);
@@ -22,7 +24,7 @@ export const getHookTemplate = ({
 import { QueryKey, useQuery, UseQueryOptions } from "@tanstack/react-query";
 
 import { ${serviceConstName} } from "@/services";
-import { ${responseTypeName}, QueryParams } from "@/types";
+import { ${responseTypeName}, ${ppName} } from "@/types";
 
 type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> = Omit<
   UseQueryOptions<${responseTypeName}, Error, TData>,
@@ -30,7 +32,7 @@ type ${capitalizedHookConstName}Options<TData = ${responseTypeName}> = Omit<
 >;
 
 type ${capitalizedHookConstName}Props<TData = ${responseTypeName}> = {
-  params: QueryParams;
+  params: ${ppName};
   queryKey?: QueryKey;
 } & ${capitalizedHookConstName}Options<TData>;
 
@@ -59,13 +61,13 @@ export function ${hookConstName}<TData = ${responseTypeName}>({
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
 import { ${serviceConstName} } from "@/services";
-import { ${responseTypeName}, Payload } from "@/types";
+import { ${responseTypeName}, ${ppName} } from "@/types";
 
 type ${capitalizedHookConstName}Options = Omit<
   UseMutationOptions<
     ${responseTypeName},
     Error,
-    Payload,
+    ${ppName},
   >,
   "mutateFn"
 >;
@@ -76,9 +78,9 @@ export function ${hookConstName}({
   return useMutation<
     ${responseTypeName},
     Error,
-    Payload
+    ${ppName}
   >({
-    mutationFn: (payload: Payload) =>
+    mutationFn: (payload: ${ppName}) =>
       ${serviceConstName}(payload),
     ...cb,
   });

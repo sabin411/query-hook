@@ -12,6 +12,8 @@ export class Template {
   serviceConstName: string;
   hookType: HookType;
   hookConstName: string;
+  /** ppName as in payload OR params name cuz they it will be params for query and payload for mutation type */
+  ppName: string;
 
   constructor(answers: CliAnswers) {
     this.answers = answers;
@@ -27,10 +29,14 @@ export class Template {
     this.responseTypeName = `${capitalize(
       this.serviceConstName,
     )}${capitalizedHookType}Response`;
+    this.ppName =
+      this.hookType === "query"
+        ? `${capitalize(this.serviceConstName)}QueryParams`
+        : `${capitalize(this.serviceConstName)}MutationPayload`;
   }
 
   public typeScriptTemplate() {
-    return getTsFileTemplate(this.responseTypeName);
+    return getTsFileTemplate(this.responseTypeName, this.hookType, this.ppName);
   }
 
   public serviceTemplate() {
@@ -38,6 +44,7 @@ export class Template {
       this.answers,
       this.responseTypeName,
       this.serviceConstName,
+      this.ppName,
     );
   }
 
@@ -47,6 +54,7 @@ export class Template {
       responseTypeName: this.responseTypeName,
       serviceConstName: this.serviceConstName,
       hookType: this.hookType,
+      ppName: this.ppName,
     };
 
     return getHookTemplate(templateArgObj);

@@ -1,6 +1,11 @@
-import { CliAnswers } from "../types";
+import { CliAnswers, HookType } from "../types";
+import { capitalize } from "../utils";
 
-export const getTsFileTemplate = (responseTypeName: string) => {
+export const getTsFileTemplate = (
+  responseTypeName: string,
+  hookType: HookType,
+  ppName: string,
+) => {
   return `
 /* global API */
 
@@ -10,13 +15,19 @@ type ProtoApiResponse = {}
 export type ${responseTypeName} =
 API.Response<ProtoApiResponse>; // * IMPORTANT: Please import and use type from the proto file you are working with.
 
+${
+  hookType === "query"
+    ? `
 // * Please don't forget to update this type name and actual type as per your requirement
-export type QueryParams = {
+export type ${ppName} = {
   id: string;
 };
-
+`
+    : `
 // * Please don't forget to update this type name and actual type as per your requirement
-export type Payload = {
+export type ${ppName} = {
 };
+`
+}
 `;
 };
